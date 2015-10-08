@@ -16,7 +16,7 @@ function optimist(fn) {
     optimist = optimist.concat([{beforeState: innerState, action}]);
     innerState = fn(innerState, action);
     validateState(innerState, action);
-    return innerState.setIn('optimist', optimist);
+    return innerState.set('optimist', optimist);
   }
   function commitReducer(state, action) {
     let {optimist, innerState} = separateState(state);
@@ -96,7 +96,7 @@ function optimist(fn) {
     }
     innerState = fn(innerState, action);
     validateState(innerState, action);
-    return innerState.setIn('optimist', optimist);
+    return innerState.set('optimist', optimist);
   }
   return function (state, action) {
     if (action.optimist) {
